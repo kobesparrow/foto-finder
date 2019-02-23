@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <title>FOTO FINDER</title>
+</head>
+<body>
+  <header>
+    <h1>FOTO<img class="header-logo" src="assets/foto-finder-logo.svg" />FINDER</h1>
+    <div class="header-search">
+      <input type="text" class="search-input" placeholder="Search">
+      <input type="image" class="magnify-me" src="assets/magnifying-glass.svg"></i>
+    </div>
+  </header>
+  <div class="top-section">
+    <form>
+      <label class="form-styles" for="title">Title</label>
+      <input class="title-input" type="text" id="title">
+      <label class="form-styles" for="title">Caption</label>
+      <input class="title-input" type="text" id="title">
+      <input class="form-styles form-btn" type="submit" value="Choose File">
+      <div class="quality-buttons">
+        <input class="form-styles form-btn q-btn" id="swill" type="submit" value="View 1 Favorites">
+        <input class="form-styles form-btn q-btn" id="plausible" type="submit" value="Add to Album">
+      </div>
+    </form>
+  </div>
+  <section class="card-area">
+    <!-------- Appended Cards -------->
+  </section>
+</body>
+<script type="text/javascript" src="photo.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</html>
