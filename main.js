@@ -4,26 +4,29 @@ var photoFile = document.getElementById('file');
 var photoGallery = document.querySelector('.images');
 var title = document.getElementById('title');
 var caption = document.getElementById('caption');
+
 var cardContainer = document.querySelector('.card-area');
-var imagesArr = JSON.parse(localStorage.getItem('photos')) || [];
+var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
 var reader = new FileReader();
 
 
 // -----------EVENT LISTENERS-----------------
-window.addEventListener('load', appendPhotos);
+window.addEventListener('load', appendPhotos(imagesArr));
 create.addEventListener('click', loadImg);
 
 
 // -----------FUNCTIONS-----------------------
-function appendPhotos() {
-  imagesArr.forEach(function (photo) {
-    photoGallery.innerHTML += `<img src=${photo.file} />`
+function appendPhotos(oldPhotos) {
+  imagesArr = [];
+  oldPhotos.forEach(function(photo) {
+    var newPhoto = new Photo(photo.title, photo.caption, photo.id, photo.file);
+    imagesArr.push(newPhoto);
+    generateCard(photo);
   })
 }
 
 function loadImg(e) {
   e.preventDefault();
-  // console.log(input);
   if (photoFile.files[0]) {
     reader.readAsDataURL(photoFile.files[0]); 
     reader.onload = addPhoto
@@ -31,10 +34,7 @@ function loadImg(e) {
 }
 
 function addPhoto(e) {
-  // console.log(e.target.result);
-  // alert('hello');
   var newPhoto = new Photo(title.value, caption.value, Date.now(), e.target.result);
-  // photoGallery.innerHTML += `<img src=${e.target.result} />`;
   generateCard(newPhoto);
   imagesArr.push(newPhoto);
   newPhoto.saveToStorage(imagesArr);
@@ -55,4 +55,8 @@ function generateCard(newObject) {
     </article>
     `
     cardContainer.insertAdjacentHTML('afterbegin', card);
+}
+
+function removeAllCards() {
+  cardContainer.innerHTML = '';
 }
