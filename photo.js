@@ -6,8 +6,9 @@ class Photo {
     this.file = file;
   }
 
-  saveToStorage() {
-
+  saveToStorage(incomingArr) {
+    var stringified = JSON.stringify(incomingArr);
+    localStorage.setItem("stringifiedPhotos", stringified);
   }
 
   deleteFromStorage() {
