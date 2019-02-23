@@ -48,12 +48,13 @@ h1 {
 }
 
 .magnify-me {
-  background-color: #ADAAB6;
-  color: #ffffff;
-  padding: 5px;
-  border-top-right-radius: 5px;
+  background-color: #BFB3B4;
   border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #ffffff;
   height: 28px;
+  padding: 5px;
+  width: 30px;
 }
 
 .magnifyMe:hover {
@@ -120,8 +121,36 @@ label {
 }
 
 /*---------------CARD SECTION--------------------*/
+.card-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
 
+.box {
+  border: 1.5px solid #96898A;
+  width: 200px;
+  height: 250px;
+  background-color: #FFFFFF;
+  margin-top: 15px;
+}
 
+.card-image {
+  height: 175px;
+  width: 200px;
+}
+
+.card-footer {
+  background-color: #5B4447;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.footer-icons {
+  height: 25px;
+}
 
 /*----------------MEDIA QUERIES------------------*/
 
