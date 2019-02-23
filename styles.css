@@ -48,12 +48,13 @@ h1 {
 }
 
 .magnify-me {
-  background-color: #ADAAB6;
-  color: #ffffff;
-  padding: 5px;
-  border-top-right-radius: 5px;
+  background-color: #BFB3B4;
   border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #ffffff;
   height: 28px;
+  padding: 5px;
+  width: 30px;
 }
 
 .magnifyMe:hover {
@@ -120,8 +121,50 @@ label {
 }
 
 /*---------------CARD SECTION--------------------*/
+.card-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
 
+.box {
+  color: #3B2B34;
+  border: 1.5px solid #96898A;
+  width: 225px;
+  height: 300px;
+  background-color: #FFFFFF;
+  margin: 35px 25px;
+}
 
+h2, h3 {
+  margin: 10px;
+  font-weight: 500;
+  font-size: medium;
+  line-height: 1.5
+}
+
+h3 {
+  line-height: 1.25;
+}
+
+.card-image {
+  height: 125px;
+  width: 222px;
+}
+
+.card-footer {
+  background-color: #5B4447;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+  top: 40px;
+}
+
+.footer-icons {
+  height: 25px;
+}
 
 /*----------------MEDIA QUERIES------------------*/
 
