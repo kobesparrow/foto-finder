@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="normalize.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="assets/camera.png"/>
   <title>FOTO FINDER</title>
 </head>
 <body>
@@ -20,25 +21,17 @@
       <label class="form-styles" for="title">Title</label>
       <input class="title-input" type="text" id="title">
       <label class="form-styles" for="title">Caption</label>
-      <input class="title-input" type="text" id="title">
-      <input class="form-styles form-btn" type="submit" value="Choose File">
+      <input class="title-input" type="text" id="caption">
+      <input type="file" name="file" id ="file" class=" input-btn">
+      <label for="file">Choose File</label>
       <div class="quality-buttons">
-        <input class="form-styles form-btn q-btn" id="swill" type="submit" value="View 1 Favorites">
-        <input class="form-styles form-btn q-btn" id="plausible" type="submit" value="Add to Album">
+        <input class="form-btn" type="submit" value="View 1 Favorites">
+        <input class="form-btn" type="submit" id="create" value="Add to Album">
       </div>
     </form>
   </div>
   <section class="card-area">
     <!-------- Appended Cards -------->
-    <article class="box">
-      <h2>Title</h2>
-      <img class="card-image" src="">
-      <h3>Doggo ipsum</h3>
-      <div class="card-footer">
-        <img class="footer-icons" src="assets/delete.svg">
-        <img class="footer-icons" src="assets/favorite.svg">
-      </div>
-    </article>
   </section>
 </body>
 <script type="text/javascript" src="photo.js"></script>

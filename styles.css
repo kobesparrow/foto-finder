@@ -5,15 +5,15 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
   background: #BFB3B4;
+  font-family: 'Open Sans', sans-serif;
 }
 
 header {
+  align-items: center;
   background-color: #3B2B34;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 h1 {
@@ -39,12 +39,12 @@ h1 {
 }
 
 .search-input {
-  border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 14px;
+  height: 28px;
   padding-left: 12px;
   width: 15rem;
-  height: 28px;
-  font-size: 14px;
 }
 
 .magnify-me {
@@ -76,24 +76,32 @@ form {
 
 .form-styles {
   border: 0px;
-  margin-bottom: 5px;
-  margin-top: 10px;
   color: #9C8E92;
   font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 label {
-  font-weight: 300;
   color: #656372;
+  font-weight: 300;
+}
+
+.title-input {
+  height: 35px;
+  padding: 8px 12px;
+  border: 1.5px solid #D5D2D9;
 }
 
 .form-btn {
+  border: 0px;
   background-color: #5B4447;
   color: #FEFEFE;
+  font-size: 14px;
   margin-bottom: 0px;
   margin-top: 30px;
   padding: 8px 0;
-  font-size: 14px;
+  width: 42%;
 }
 
 .form-btn:hover {
@@ -101,23 +109,35 @@ label {
   cursor: pointer;
 }
 
-.title-input {
-  height: 35px;
-  padding: 8px 12px;
+.input-btn + label {
+  background-color: #5B4447;
+  color: #FEFEFE;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  margin-top: 30px;
+  padding: 8px 0;
+  text-align: center;
 }
 
-.title-input {
-  border: 1.5px solid #D5D2D9;
+.input-btn + label:hover {
+  background-color: #938284;
+  cursor: pointer;
+}
+
+.input-btn {
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1;
 }
 
 .quality-buttons {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-}
-
-.q-btn {
-  width: 42%;
 }
 
 /*---------------CARD SECTION--------------------*/
@@ -129,19 +149,19 @@ label {
 }
 
 .box {
-  color: #3B2B34;
-  border: 1.5px solid #96898A;
-  width: 225px;
-  height: 300px;
   background-color: #FFFFFF;
+  border: 1.5px solid #96898A;
+  color: #3B2B34;
+  height: 300px;
   margin: 35px 25px;
+  width: 225px;
 }
 
 h2, h3 {
-  margin: 10px;
-  font-weight: 500;
   font-size: medium;
-  line-height: 1.5
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 10px;
 }
 
 h3 {
