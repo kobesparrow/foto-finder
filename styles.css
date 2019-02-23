@@ -129,16 +129,28 @@ label {
 }
 
 .box {
+  color: #3B2B34;
   border: 1.5px solid #96898A;
-  width: 200px;
-  height: 250px;
+  width: 225px;
+  height: 300px;
   background-color: #FFFFFF;
-  margin-top: 15px;
+  margin: 35px 25px;
+}
+
+h2, h3 {
+  margin: 10px;
+  font-weight: 500;
+  font-size: medium;
+  line-height: 1.5
+}
+
+h3 {
+  line-height: 1.25;
 }
 
 .card-image {
-  height: 175px;
-  width: 200px;
+  height: 125px;
+  width: 222px;
 }
 
 .card-footer {
@@ -146,6 +158,8 @@ label {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  position: relative;
+  top: 40px;
 }
 
 .footer-icons {
