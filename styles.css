@@ -184,6 +184,7 @@ h3 {
 }
 
 .footer-icons {
+  cursor: pointer;
   height: 25px;
 }
 

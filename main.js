@@ -15,6 +15,7 @@ window.addEventListener('load', appendPhotos(imagesArr));
 create.addEventListener('click', loadImg);
 cardContainer.addEventListener('keydown', saveOnReturn);
 cardContainer.addEventListener('focusout', saveCardAgain);
+cardContainer.addEventListener('click', deleteCard);
 
 
 
@@ -56,10 +57,10 @@ function saveOnReturn(event) {
 function saveCardAgain(event) {
   var cardId = parseInt(event.target.closest('.box').dataset.id);
   var cardText = event.target.innerText;
-  var check = event.target.classList.contains('card-title');
+  var category = event.target.classList.contains('card-title') ? 'title' : 'caption';
    imagesArr.forEach(function (photo) {
       if(photo.id === cardId) {
-        photo.updatePhoto(cardText, check);
+        photo.updatePhoto(cardText, category);
       } 
     });
 }
@@ -71,7 +72,7 @@ function generateCard(newObject) {
       <img class="card-image" src="${newObject.file}">
       <h3 contenteditable>${newObject.caption}</h3>
       <div class="card-footer">
-        <img class="footer-icons" src="assets/delete.svg">
+        <img class="footer-icons delete" src="assets/delete.svg">
         <img class="footer-icons" src="assets/favorite.svg">
       </div>
     </article>
@@ -80,11 +81,14 @@ function generateCard(newObject) {
 }
 
 function deleteCard(event) { 
-  var cardId = parseInt(event.target.parentElement.parentElement.dataset.id);
-  console
-  if (event.target.className.includes('dlt-btn')) {
-    event.target.parentElement.parentElement.remove();
-    ideas[0].deleteFromStorage(cardId);
+  var cardId = parseInt(event.target.closest('.box').dataset.id);
+  if (event.target.className.includes('delete')) {
+    event.target.closest('.box').remove();
+    var card = imagesArr.find(function(onePhoto) {
+      return onePhoto.id === cardId;
+    });
+    var index = imagesArr.indexOf(card);
+    imagesArr[0].deleteFromStorage(index);
   }
 }
 

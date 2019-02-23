@@ -11,12 +11,13 @@ class Photo {
     localStorage.setItem("stringifiedPhotos", stringified);
   }
 
-  deleteFromStorage() {
-
+  deleteFromStorage(index) {
+    imagesArr.splice(index, 1);
+    this.saveToStorage(imagesArr);
   }
 
-  updatePhoto(cardText, check) {
-    check ? this.title = cardText : this.caption = cardText;
+  updatePhoto(cardText, category) {
+    this[category] = cardText
     this.saveToStorage(imagesArr);
   }
 }
