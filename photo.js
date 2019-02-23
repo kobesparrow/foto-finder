@@ -15,7 +15,8 @@ class Photo {
 
   }
 
-  updatePhoto() {
-
+  updatePhoto(cardText, check) {
+    check ? this.title = cardText : this.caption = cardText;
+    this.saveToStorage(imagesArr);
   }
 }

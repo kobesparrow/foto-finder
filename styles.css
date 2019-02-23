@@ -171,6 +171,7 @@ h3 {
 .card-image {
   height: 125px;
   width: 222px;
+  object-fit: contain;
 }
 
 .card-footer {
