@@ -4,6 +4,7 @@ var photoFile = document.getElementById('file');
 var photoGallery = document.querySelector('.images');
 var title = document.getElementById('title');
 var caption = document.getElementById('caption');
+var searchInput = document.querySelector('.search-input');
 
 var cardContainer = document.querySelector('.card-area');
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
@@ -16,7 +17,7 @@ create.addEventListener('click', loadImg);
 cardContainer.addEventListener('keydown', saveOnReturn);
 cardContainer.addEventListener('focusout', saveCardAgain);
 cardContainer.addEventListener('click', deleteCard);
-
+searchInput.addEventListener('keyup', filterText);
 
 
 // -----------FUNCTIONS-----------------------
@@ -38,12 +39,14 @@ function loadImg(e) {
 }
 
 function addPhoto(e) {
-  var newPhoto = new Photo(title.value, caption.value, Date.now(), e.target.result);
-  generateCard(newPhoto);
-  imagesArr.push(newPhoto);
-  newPhoto.saveToStorage(imagesArr);
-  title.value = '';
-  caption.value = '';
+   if (title.value !== '' && caption.value !== '') {
+    var newPhoto = new Photo(title.value, caption.value, Date.now(), e.target.result);
+    generateCard(newPhoto);
+    imagesArr.push(newPhoto);
+    newPhoto.saveToStorage(imagesArr);
+    title.value = '';
+    caption.value = '';
+  }
 }
 
 function saveOnReturn(event) {
@@ -90,6 +93,17 @@ function deleteCard(event) {
     var index = imagesArr.indexOf(card);
     imagesArr[0].deleteFromStorage(index);
   }
+}
+
+function filterText() {
+  removeAllCards();
+  var searchValue = searchInput.value;
+  var filteredIdeas = imagesArr.filter(function(photo) {
+    return photo.title.toLowerCase().includes(searchValue) || photo.caption.toLowerCase().includes(searchValue); 
+  }); 
+  filteredIdeas.forEach(function(photo) {
+  generateCard(photo);
+  });
 }
 
 function removeAllCards() {
