@@ -154,7 +154,7 @@ label {
   border: 1.5px solid #96898A;
   color: #3B2B34;
   height: 300px;
-  margin: 35px 25px;
+  margin: 35px 15px;
   width: 225px;
 }
 
@@ -204,6 +204,7 @@ h3 {
   }
 
   h1 {
+    font-size: 2em;
     margin: 0px;
     margin-top: 10px;
   }
@@ -219,6 +220,18 @@ h3 {
   .q-btn {
     width: 100%
   }
+
+  .form-btn {
+    width: 100%;
+  }
+
+  .show-btn {
+    width: 65%;
+  }
+
+  .box {
+    margin-bottom: 0px;
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -230,4 +243,8 @@ h3 {
     width: 274px;
   }
 
+  .show-btn {
+    margin-top: 35px;
+    width: 271px;
+  }
 }
