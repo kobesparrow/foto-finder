@@ -19,9 +19,9 @@
   <div class="top-section">
     <form>
       <label class="form-styles" for="title">Title</label>
-      <input class="title-input" type="text" id="title">
+      <input class="title-input" type="text" id="title" maxlength="27">
       <label class="form-styles" for="title">Caption</label>
-      <input class="title-input" type="text" id="caption">
+      <input class="title-input" type="text" id="caption" maxlength="100">
       <input type="file" name="file" id ="file" class="input-btn" accept="image/*">
       <label for="file">Choose File</label>
       <div class="quality-buttons">
@@ -33,6 +33,7 @@
   <section class="card-area">
     <!-------- Appended Cards -------->
   </section>
+  <input class="show-btn form-btn" type="submit" value="Please add a photo" disabled>
   <input class="show-btn form-btn" type="submit" value="Show More">
 </body>
 <script type="text/javascript" src="photo.js"></script>

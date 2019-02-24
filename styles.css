@@ -57,7 +57,7 @@ h1 {
   width: 30px;
 }
 
-.magnifyMe:hover {
+.magnify-me:hover {
   background-color: #938284;
   cursor: hover;
 }
@@ -91,6 +91,7 @@ label {
   height: 35px;
   padding: 8px 12px;
   border: 1.5px solid #D5D2D9;
+
 }
 
 .form-btn {
@@ -153,7 +154,7 @@ label {
   background-color: #FFFFFF;
   border: 1.5px solid #96898A;
   color: #3B2B34;
-  height: 300px;
+  height: 320px;
   margin: 35px 15px;
   width: 225px;
 }
@@ -167,6 +168,7 @@ h2, h3 {
 
 h3 {
   line-height: 1.25;
+  height: 80px;
 }
 
 .card-image {
@@ -180,8 +182,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  position: relative;
-  top: 40px;
 }
 
 .footer-icons {
