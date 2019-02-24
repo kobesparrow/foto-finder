@@ -8,7 +8,6 @@ var searchInput = document.querySelector('.search-input');
 var showBtn = document.querySelector('.show-btn');
 var cardContainer = document.querySelector('.card-area');
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
-// var mostRecent = imagesArr.slice(-10);
 var reader = new FileReader();
 
 
@@ -30,7 +29,7 @@ function appendPhotos(oldPhotos) {
     var newPhoto = new Photo(photo.title, photo.caption, photo.id, photo.file);
     imagesArr.push(newPhoto);
   })
-  showPhotos(imagesArr);
+  limitPhotos(imagesArr);
 }
 
 function loadImg(e) {
@@ -121,7 +120,7 @@ function filterText() {
   });
 }
 
-function showPhotos(incomingArr) {
+function limitPhotos(incomingArr) {
   if (incomingArr.length >= 10) {
   var mostRecent = imagesArr.slice(-10);
   mostRecent.forEach(function(photo) {
@@ -133,6 +132,22 @@ function showPhotos(incomingArr) {
   });
  }
 }
+
+function showPhotos() {
+  removeAllCards();
+  if (showBtn.value === 'Show less') {
+    var mostRecent = imagesArr.slice(-10);
+    mostRecent.forEach(function(photo) {
+    generateCard(photo);
+    });
+    showBtn.value = 'Show more';
+  } else if (imagesArr.length >= 10) {
+    imagesArr.forEach(function(photo) {
+    generateCard(photo);
+    });
+    showBtn.value = 'Show less';
+    }
+  }
 
 function removeAllCards() {
   cardContainer.innerHTML = '';
