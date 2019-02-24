@@ -5,10 +5,12 @@ var photoGallery = document.querySelector('.images');
 var title = document.getElementById('title');
 var caption = document.getElementById('caption');
 var searchInput = document.querySelector('.search-input');
-
+var showBtn = document.querySelector('.show-btn');
 var cardContainer = document.querySelector('.card-area');
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
+// var mostRecent = imagesArr.slice(-10);
 var reader = new FileReader();
+
 
 
 // -----------EVENT LISTENERS-----------------
@@ -18,6 +20,7 @@ cardContainer.addEventListener('keydown', saveOnReturn);
 cardContainer.addEventListener('focusout', saveCardAgain);
 cardContainer.addEventListener('click', deleteCard);
 searchInput.addEventListener('keyup', filterText);
+showBtn.addEventListener('click', showPhotos);
 
 
 // -----------FUNCTIONS-----------------------
@@ -26,8 +29,8 @@ function appendPhotos(oldPhotos) {
   oldPhotos.forEach(function(photo) {
     var newPhoto = new Photo(photo.title, photo.caption, photo.id, photo.file);
     imagesArr.push(newPhoto);
-    generateCard(photo);
   })
+  showPhotos(imagesArr);
 }
 
 function loadImg(e) {
@@ -80,7 +83,18 @@ function generateCard(newObject) {
       </div>
     </article>
     `
-    cardContainer.insertAdjacentHTML('afterbegin', card);
+  cardContainer.insertAdjacentHTML('afterbegin', card);
+  // if (imagesArr.length >= 9) {
+  //   event.target.classList.remove('show-less-btn');
+    // ideasOnPage[i].classList.add('hidden-idea');
+  // }
+}
+
+function addBtn() {
+  var showBtn = `
+    <input class="show-btn form-btn" type="submit" value="Show Less">
+    `
+  cardContainer.insertAdjacentHTML('afterend', showBtn)  
 }
 
 function deleteCard(event) { 
@@ -91,6 +105,7 @@ function deleteCard(event) {
       return onePhoto.id === cardId;
     });
     var index = imagesArr.indexOf(card);
+    // deleteFromStorage(index);
     imagesArr[0].deleteFromStorage(index);
   }
 }
@@ -104,6 +119,19 @@ function filterText() {
   filteredIdeas.forEach(function(photo) {
   generateCard(photo);
   });
+}
+
+function showPhotos(incomingArr) {
+  if (incomingArr.length >= 10) {
+  var mostRecent = imagesArr.slice(-10);
+  mostRecent.forEach(function(photo) {
+  generateCard(photo);
+  });
+ } else {
+  imagesArr.forEach(function(photo) {
+  generateCard(photo);
+  });
+ }
 }
 
 function removeAllCards() {
