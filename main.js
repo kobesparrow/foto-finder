@@ -22,7 +22,6 @@ showBtn.addEventListener('click', showPhotos);
 cardContainer.addEventListener('click', favoritePhoto);
 
 
-
 // -----------FUNCTIONS-----------------------
 function appendPhotos(oldPhotos) {
   imagesArr = [];
@@ -113,7 +112,6 @@ function deleteCard(event) {
       return onePhoto.id === cardId;
     });
     var index = imagesArr.indexOf(card);
-    // deleteFromStorage(index);
     imagesArr[0].deleteFromStorage(index);
   }
 }
@@ -160,8 +158,11 @@ function showPhotos() {
 
 function favoritePhoto() {
   var cardId = parseInt(event.target.closest('.box').dataset.id);
-  
-  console.log(cardId);
+  imagesArr.forEach(function (photo) {
+    if (photo.id === cardId) {
+      photo.favoritePhoto()
+    }
+  });
 }
 
 function removeAllCards() {
