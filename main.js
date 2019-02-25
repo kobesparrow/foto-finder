@@ -86,27 +86,21 @@ function saveCardAgain(event) {
 }
 
 function generateCard(newObject) {
-  var card = `
+    var card = `
     <article class="box" data-id=${newObject.id}>
       <h2 class='card-title' contenteditable>${newObject.title}</h2>
       <img class="card-image" src="${newObject.file}">
       <h3 contenteditable>${newObject.caption}</h3>
       <div class="card-footer">
-        <img class="footer-icons delete" src="assets/delete.svg" onmouseover="this.src='assets/delete-active.svg';" onmouseout="this.src='assets/delete.svg';">
-        <img class="footer-icons" src="assets/favorite.svg" onmouseover="this.src='assets/favorite-active.svg';" onmouseout="this.src='assets/favorite.svg';">
+        <button class="trash-span"></button>
+        <button class="favorite-span favorite-${newObject.favorite}"></button>
       </div>
     </article>
     `
-  cardContainer.insertAdjacentHTML('afterbegin', card);
+  cardContainer.insertAdjacentHTML('afterbegin', card);  
   promptMsg();
   showShowButton();
 }
-
-// function persistFavorite() {
-//   if (newObject.favorite === true) {
-    
-//   }
-// }
 
 function promptMsg() {
   var msgBtn = document.querySelector('#add-request')
@@ -143,17 +137,16 @@ function deleteCard(event) {
 }
 
 function filterText() {
+  var searchValue = searchInput.value;
   removeAllCards();
   if (favoritesFilter.value === 'Show All Cards') {
-    var searchValue = searchInput.value;
     var filteredPhotos = imagesArr.filter(function(photo) {
-      return photo.title.toLowerCase().includes(searchValue) || photo.caption.toLowerCase().includes(searchValue) && photo.favorite === true; 
+      return photo.favorite === true && photo.title.toLowerCase().includes(searchValue) || photo.favorite === true && photo.caption.toLowerCase().includes(searchValue); 
     }); 
     filteredPhotos.forEach(function(photo) {
     generateCard(photo);
     });
   } else {
-    var searchValue = searchInput.value;
     var filteredPhotos = imagesArr.filter(function(photo) {
       return photo.title.toLowerCase().includes(searchValue) || photo.caption.toLowerCase().includes(searchValue); 
     }); 
@@ -170,7 +163,7 @@ function filterFavorites(e) {
     imagesArr.forEach(function(photo) {
     generateCard(photo);
     });
-    favoritesFilter.value = 'View 1 Favorites';
+    findNumberOfFavorites();
   } else {
     favoritesFilter.value = 'Show All Cards';
     var searchValue = true;
@@ -207,6 +200,20 @@ function favoritePhoto() {
     }
   });
   findNumberOfFavorites();
+  persistFavorite(cardId);
+}
+
+function persistFavorite(cardId) {
+  var favoriteSpan = event.target.closest('.favorite-span');
+  imagesArr.forEach(function (photo) {
+    if (photo.id === cardId && photo.favorite === true) {
+      favoriteSpan.classList.add('favorite-true');
+      favoriteSpan.classList.remove('favorite-false');
+    } else if (photo.id === cardId && photo.favorite === false) {
+      favoriteSpan.classList.add('favorite-false');
+      favoriteSpan.classList.remove('favorite-true');
+    }
+  });
 }
 
 function findNumberOfFavorites() {
