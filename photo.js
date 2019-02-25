@@ -4,7 +4,7 @@ class Photo {
     this.caption = caption;
     this.id = id;
     this.file = file;
-    this.favorite = false;
+    this.favorite = favorite || false;
   }
 
   saveToStorage(incomingArr) {
@@ -21,7 +21,7 @@ class Photo {
     this[category] = cardText
     this.saveToStorage(imagesArr);
   }
-  
+
   favoritePhoto() {
     var favStatus = this.favorite = !this.favorite;
     this.updatePhoto(favStatus, 'favorite')
