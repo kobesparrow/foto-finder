@@ -5,11 +5,10 @@ var photoGallery = document.querySelector('.images');
 var title = document.getElementById('title');
 var caption = document.getElementById('caption');
 var searchInput = document.querySelector('.search-input');
-var showBtn = document.querySelector('.show-btn');
+var showBtn = document.getElementById('show-more');
 var cardContainer = document.querySelector('.card-area');
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
 var reader = new FileReader();
-
 
 
 // -----------EVENT LISTENERS-----------------
@@ -20,6 +19,8 @@ cardContainer.addEventListener('focusout', saveCardAgain);
 cardContainer.addEventListener('click', deleteCard);
 searchInput.addEventListener('keyup', filterText);
 showBtn.addEventListener('click', showPhotos);
+cardContainer.addEventListener('click', favoritePhoto);
+
 
 
 // -----------FUNCTIONS-----------------------
@@ -77,16 +78,24 @@ function generateCard(newObject) {
       <img class="card-image" src="${newObject.file}">
       <h3 contenteditable>${newObject.caption}</h3>
       <div class="card-footer">
-        <img class="footer-icons delete" src="assets/delete.svg">
-        <img class="footer-icons" src="assets/favorite.svg">
+        <img class="footer-icons delete" src="assets/delete.svg" onmouseover="this.src='assets/delete-active.svg';" onmouseout="this.src='assets/delete.svg';">
+        <img class="footer-icons" src="assets/favorite.svg"onmouseover="this.src='assets/favorite-active.svg';" onmouseout="this.src='assets/favorite.svg';">
       </div>
     </article>
     `
   cardContainer.insertAdjacentHTML('afterbegin', card);
-  // if (imagesArr.length >= 9) {
-  //   event.target.classList.remove('show-less-btn');
-    // ideasOnPage[i].classList.add('hidden-idea');
-  // }
+  var msgBtn = document.querySelector('#add-request')
+  msgBtn.classList.add('hidden-msg');
+  showShowButton();
+}
+
+function showShowButton() {
+  var showMore = document.getElementById('show-more');
+  if (imagesArr.length >= 9) {
+    showMore.classList.remove('hidden-msg');
+  } else {
+    showMore.classList.add('hidden-msg');
+  }
 }
 
 function addBtn() {
@@ -146,8 +155,14 @@ function showPhotos() {
     generateCard(photo);
     });
     showBtn.value = 'Show less';
-    }
   }
+}
+
+function favoritePhoto() {
+  var cardId = parseInt(event.target.closest('.box').dataset.id);
+  
+  console.log(cardId);
+}
 
 function removeAllCards() {
   cardContainer.innerHTML = '';

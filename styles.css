@@ -35,7 +35,6 @@ h1 {
   display: flex;
   height: 34px;
   margin-right: 26px;
-
 }
 
 .search-input {
@@ -103,7 +102,6 @@ label {
   margin-top: 30px;
   padding: 8px 0;
   width: 42%;
-  /*justify-content: center;*/
 }
 
 .form-btn:hover {
@@ -155,7 +153,7 @@ label {
   border: 1.5px solid #96898A;
   color: #3B2B34;
   height: 320px;
-  margin: 35px 15px;
+  margin: 35px 15px 0px 15px;
   width: 225px;
 }
 
@@ -173,8 +171,10 @@ h3 {
 
 .card-image {
   height: 125px;
-  width: 222px;
-  object-fit: contain;
+  width: 221px;
+  object-fit: cover;
+/*  position: relative;
+  left: 1px;*/
 }
 
 .card-footer {
@@ -192,11 +192,27 @@ h3 {
 .show-btn {
   display: flex;
   justify-content: center;
-  margin: 20px auto;
+  margin: 55px auto;
   width: 65%;
 }
 
+#add-request:hover {
+  background-color: #5B4447;
+  cursor: initial;
+}
+
+.hidden-msg {
+  display: none;
+}
+
 /*----------------MEDIA QUERIES------------------*/
+
+/*@media only screen and (min-width: 1100px) {
+  .card-area {
+    width: 1100px;
+    justify-content: center;
+  }
+}*/
 
 @media only screen and (max-width: 650px) {
   header {
