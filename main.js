@@ -92,18 +92,12 @@ function generateCard(newObject) {
       <img class="card-image" src="${newObject.file}">
       <h3 contenteditable>${newObject.caption}</h3>
       <div class="card-footer">
-        <img class="footer-icons delete" src="assets/delete.svg" onmouseover="this.src='assets/delete-active.svg';" onmouseout="this.src='assets/delete.svg';">
-        <span class="favorite-span"><img class="footer-icons" src=${newObject.favorite ? "assets/favorite-active.svg" : "assets/favorite.svg"} onmouseover="this.src='assets/favorite-active.svg';" onmouseout="this.src='assets/favorite.svg';"></span>
+        <button class="trash-span"></button>
+        <button class="favorite-span favorite-${newObject.favorite}"></button>
       </div>
     </article>
     `
   cardContainer.insertAdjacentHTML('afterbegin', card);  
-
-  // var favoriteSpan = event.target.closest('.favorite-span');
-  
-  // if (newObject.favorite === true) {
-  //   favoriteSpan.innerHTML = `<img class="footer-icons" src="assets/favorite.svg"`
-  // }
   promptMsg();
   showShowButton();
 }
@@ -211,13 +205,13 @@ function favoritePhoto() {
 
 function persistFavorite(cardId) {
   var favoriteSpan = event.target.closest('.favorite-span');
-  // console.log(cardId);
-  // console.log(favoriteSpan);
   imagesArr.forEach(function (photo) {
     if (photo.id === cardId && photo.favorite === true) {
-      favoriteSpan.innerHTML = `<img class="footer-icons" src="assets/favorite-active.svg">`
-    } else {
-      favoriteSpan.innerHTML = `<img class="footer-icons" src="assets/favorite.svg" onmouseover="this.src='assets/favorite-active.svg';" onmouseout="this.src='assets/favorite.svg';">`
+      favoriteSpan.classList.add('favorite-true');
+      favoriteSpan.classList.remove('favorite-false');
+    } else if (photo.id === cardId && photo.favorite === false) {
+      favoriteSpan.classList.add('favorite-false');
+      favoriteSpan.classList.remove('favorite-true');
     }
   });
 }
