@@ -55,7 +55,7 @@ function addPhoto(e) {
     title.value = '';
     caption.value = '';
   } else {
-    alert('Please add a title and a caption.')
+    alert('Please add a title AND a caption.')
   }
 }
 
@@ -96,7 +96,6 @@ function generateCard(newObject) {
 }
 
 function promptMsg() {
-  var msgBtn = document.querySelector('#add-request')
   msgBtn.classList.add('hidden-msg');
 }
 
@@ -129,6 +128,7 @@ function deleteCard(event) {
   if (imagesArr.length === 0) {
     addPhotoRequestButton();
   }
+  showShowButton();
 }
 
 function addPhotoRequestButton() {

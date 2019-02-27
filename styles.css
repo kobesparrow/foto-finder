@@ -220,6 +220,10 @@ h3 {
   background: url(assets/favorite-active.svg) no-repeat;
 }
 
+footer {
+  height: 35px;
+}
+
 .show-btn {
   display: flex;
   justify-content: center;

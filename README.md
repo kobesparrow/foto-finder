@@ -8,7 +8,7 @@ Foto Finder combines everything learned over the first five weeks of instruction
 #### Finished Product
 Foto Finder finished project by Mark R. Collins
 
-[![screencapture-file-Users-doc-turing-projects-mod-one-foto-finder.png](https://i.postimg.cc/cCC2DtQW/screencapture-file-Users-doc-turing-projects-mod-one-foto-finder.png)](https://postimg.cc/9w3L0M8g)
+[[![screencapture-file-Users-doc-turing-projects-mod-one-foto-finder.png](https://i.postimg.cc/25fJp8ss/screencapture-file-Users-doc-turing-projects-mod-one-foto-finder.png)](https://postimg.cc/fVB5mZTC)
 
 #### Biggest Win
 The functions may not be the cleanest, the logic meanders at times...but I did it ALL myself. I wrote every single line of this code using my own brain. Considering where I was at three weeks ago, to be able to create this entire site from scratch is so exciting. And best of all, I had fun doing it.
