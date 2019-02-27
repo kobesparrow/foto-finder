@@ -1,4 +1,3 @@
-// -----------GLOBAL VARIABLES----------------
 var create = document.getElementById('create');
 var photoFile = document.getElementById('file');
 var photoGallery = document.querySelector('.images');
@@ -11,8 +10,6 @@ var favoritesFilter = document.getElementById('favorites-filter')
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
 var reader = new FileReader();
 
-
-// -----------EVENT LISTENERS-----------------
 window.addEventListener('load', appendPhotos(imagesArr), findNumberOfFavorites());
 create.addEventListener('click', loadImg);
 cardContainer.addEventListener('keydown', saveOnReturn);
@@ -23,8 +20,6 @@ showBtn.addEventListener('click', showPhotos);
 cardContainer.addEventListener('click', favoritePhoto);
 favoritesFilter.addEventListener('click', filterFavorites);
 
-
-// -----------FUNCTIONS-----------------------
 function loadImg(e) {
   e.preventDefault();
   if (photoFile.files[0]) {
