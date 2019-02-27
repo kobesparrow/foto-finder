@@ -44,14 +44,9 @@ function appendPhotos(oldPhotos) {
 
 function limitPhotos(incomingArr) {
   if (incomingArr.length >= 10) {
-  var mostRecent = imagesArr.slice(-10);
-  mostRecent.forEach(function(photo) {
-  generateCard(photo);
-  });
+    imagesArr.slice(-10).forEach(photo => generateCard(photo));
  } else {
-  imagesArr.forEach(function(photo) {
-  generateCard(photo);
-  });
+    imagesArr.forEach(photo => generateCard(photo));
  }
 }
 
@@ -92,7 +87,7 @@ function generateCard(newObject) {
       <img class="card-image" src="${newObject.file}">
       <h3 contenteditable>${newObject.caption}</h3>
       <div class="card-footer">
-        <button class="trash-span"></button>
+        <button class="remove trash-span"></button>
         <button class="favorite-span favorite-${newObject.favorite}"></button>
       </div>
     </article>
@@ -125,7 +120,7 @@ function addBtn() {
 
 function deleteCard(event) { 
   var cardId = parseInt(event.target.closest('.box').dataset.id);
-  if (event.target.className.includes('delete')) {
+  if (event.target.className.includes('remove')) {
     event.target.closest('.box').remove();
     var card = imagesArr.find(function(onePhoto) {
       return onePhoto.id === cardId;
@@ -133,7 +128,6 @@ function deleteCard(event) {
     var index = imagesArr.indexOf(card);
     imagesArr[0].deleteFromStorage(index);
   }
-
 }
 
 function filterText() {
@@ -141,18 +135,14 @@ function filterText() {
   removeAllCards();
   if (favoritesFilter.value === 'Show All Cards') {
     var filteredPhotos = imagesArr.filter(function(photo) {
-      return photo.favorite === true && photo.title.toLowerCase().includes(searchValue) || photo.favorite === true && photo.caption.toLowerCase().includes(searchValue); 
+      return photo.favorite === true && (photo.title.toLowerCase().includes(searchValue) ||  photo.caption.toLowerCase().includes(searchValue)); 
     }); 
-    filteredPhotos.forEach(function(photo) {
-    generateCard(photo);
-    });
+    goThroughArray(filteredPhotos);
   } else {
     var filteredPhotos = imagesArr.filter(function(photo) {
       return photo.title.toLowerCase().includes(searchValue) || photo.caption.toLowerCase().includes(searchValue); 
     }); 
-    filteredPhotos.forEach(function(photo) {
-    generateCard(photo);
-    });
+    goThroughArray(filteredPhotos);
   }
 }
 
@@ -160,9 +150,7 @@ function filterFavorites(e) {
   e.preventDefault();
   removeAllCards();
   if (favoritesFilter.value === 'Show All Cards') {
-    imagesArr.forEach(function(photo) {
-    generateCard(photo);
-    });
+    goThroughArray(imagesArr);
     findNumberOfFavorites();
   } else {
     favoritesFilter.value = 'Show All Cards';
@@ -170,24 +158,23 @@ function filterFavorites(e) {
     var filteredPhotos = imagesArr.filter(function(photo) {
       return photo.favorite === searchValue;  
     }); 
-    filteredPhotos.forEach(function(photo) {
+    goThroughArray(filteredPhotos);
+  }
+}
+
+function goThroughArray(thisArr) {
+  thisArr.forEach(function(photo) {
     generateCard(photo);
     });
-  }
 }
 
 function showPhotos() {
   removeAllCards();
   if (showBtn.value === 'Show less') {
-    var mostRecent = imagesArr.slice(-10);
-    mostRecent.forEach(function(photo) {
-    generateCard(photo);
-    });
+    imagesArr.slice(-10).forEach(photo => generateCard(photo));
     showBtn.value = 'Show more';
   } else if (imagesArr.length >= 10) {
-    imagesArr.forEach(function(photo) {
-    generateCard(photo);
-    });
+    imagesArr.forEach(photo => generateCard(photo));
     showBtn.value = 'Show less';
   }
 }
@@ -211,7 +198,6 @@ function persistFavorite(cardId) {
       favoriteSpan.classList.remove('favorite-false');
     } else if (photo.id === cardId && photo.favorite === false) {
       favoriteSpan.classList.add('favorite-false');
-      favoriteSpan.classList.remove('favorite-true');
     }
   });
 }

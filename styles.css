@@ -146,7 +146,7 @@ label {
 .card-area {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -155,7 +155,7 @@ label {
   border: 1.5px solid #96898A;
   color: #3B2B34;
   height: 320px;
-  margin: 35px 15px 0px 15px;
+  margin: 35px 0px 0px 35px;
   width: 225px;
 }
 
@@ -170,6 +170,8 @@ h3 {
 h3 {
   line-height: 1.25;
   height: 80px;
+  margin-top: 8px;
+  padding-top: 1px;
 }
 
 .card-image {
@@ -185,14 +187,9 @@ h3 {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  position: relative;
+  top: 2px;
 }
-
-/*.footer-icons {
-  cursor: pointer;
-  height: 25px;
-}
-
-*/
 
 .trash-span,
 .trash-span:hover,
@@ -203,6 +200,7 @@ h3 {
   height: 25px;
   width: 25px;
   border: 0px;
+  outline: none;
 }
 
 
@@ -235,13 +233,18 @@ h3 {
   width: 65%;
 }
 
-#add-request:hover {
-  background-color: #5B4447;
-  cursor: initial;
-}
-
 .hidden-msg {
   display: none;
+}
+
+.invite-msg {
+  border: 0px;
+  background-color: #BFB3B4;
+  color: #3B2B34;
+  font-size: 14px;
+  margin: 55px auto;
+  width: 100%;
+  font-weight: 600;
 }
 
 /*----------------MEDIA QUERIES------------------*/
@@ -284,8 +287,13 @@ h3 {
     width: 65%;
   }
 
+  .card-area {
+    align-items: default;
+    justify-content: center;
+  }
+
   .box {
-    margin-bottom: 0px;
+    margin: 35px 15px 0px 15px
   }
 }
 
