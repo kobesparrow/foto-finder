@@ -142,7 +142,6 @@ label {
   margin-bottom: 15px;
 }
 
-/*---------------CARD SECTION--------------------*/
 .card-area {
   display: flex;
   flex-wrap: wrap;
@@ -178,8 +177,6 @@ h3 {
   height: 125px;
   width: 221px;
   object-fit: cover;
-/*  position: relative;
-  left: .5px;*/
 }
 
 .card-footer {
@@ -203,7 +200,6 @@ h3 {
   outline: none;
 }
 
-
 .trash-span {
   background: url(assets/delete.svg) no-repeat;
 }
@@ -223,8 +219,6 @@ h3 {
 .favorite-false:hover {
   background: url(assets/favorite-active.svg) no-repeat;
 }
-
-/*---------BOTTOM BUTTONS------------*/
 
 .show-btn {
   display: flex;
@@ -246,15 +240,6 @@ h3 {
   width: 100%;
   font-weight: 600;
 }
-
-/*----------------MEDIA QUERIES------------------*/
-
-/*@media only screen and (min-width: 1100px) {
-  .card-area {
-    width: 1100px;
-    justify-content: center;
-  }
-}*/
 
 @media only screen and (max-width: 650px) {
   header {
