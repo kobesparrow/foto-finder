@@ -7,6 +7,7 @@ var searchInput = document.querySelector('.search-input');
 var showBtn = document.getElementById('show-more');
 var cardContainer = document.querySelector('.card-area');
 var favoritesFilter = document.getElementById('favorites-filter')
+var msgBtn = document.querySelector('#add-request')
 var imagesArr = JSON.parse(localStorage.getItem('stringifiedPhotos')) || [];
 var reader = new FileReader();
 
@@ -53,6 +54,8 @@ function addPhoto(e) {
     newPhoto.saveToStorage(imagesArr);
     title.value = '';
     caption.value = '';
+  } else {
+    alert('Please add a title AND a caption.')
   }
 }
 
@@ -93,7 +96,6 @@ function generateCard(newObject) {
 }
 
 function promptMsg() {
-  var msgBtn = document.querySelector('#add-request')
   msgBtn.classList.add('hidden-msg');
 }
 
@@ -123,6 +125,14 @@ function deleteCard(event) {
     var index = imagesArr.indexOf(card);
     imagesArr[0].deleteFromStorage(index);
   }
+  if (imagesArr.length === 0) {
+    addPhotoRequestButton();
+  }
+  showShowButton();
+}
+
+function addPhotoRequestButton() {
+  msgBtn.classList.remove('hidden-msg');
 }
 
 function filterText() {
